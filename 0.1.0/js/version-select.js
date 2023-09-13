@@ -29,7 +29,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function makeSelect(options, selected) {
     var select = document.createElement("select");
-    select.classList.add("form-control");
 
     options.forEach(function(i) {
       var option = new Option(i.text, i.value, undefined,
@@ -53,21 +52,13 @@ window.addEventListener("DOMContentLoaded", function() {
     var select = makeSelect(versions.map(function(i) {
       return {text: i.title, value: i.version};
     }), realVersion);
+    select.id = "version-selector";
     select.addEventListener("change", function(event) {
       window.location.href = REL_BASE_URL + "/../" + this.value + "/";
     });
 
-    var container = document.createElement("div");
-    container.id = "version-selector";
-    container.appendChild(select);
-
-    var title = document.querySelector(".navbar-brand");
-    if (title.parentNode.classList.contains("navbar-header")) {
-      var height = window.getComputedStyle(title).getPropertyValue("height");
-      container.style.height = height;
-    }
-
-    title.parentNode.insertBefore(container, title.nextSibling);
+    var title = document.querySelector("div.wy-side-nav-search");
+    title.insertBefore(select, title.querySelector(".icon-home").nextSibling);
   };
   xhr.send();
 });
