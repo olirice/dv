@@ -1,0 +1,20 @@
+site_name: dv 
+site_url: https://olirice.github.io/dv
+site_description: test doc versioning
+
+repo_name: olirice/dv
+repo_url: https://github.com/olirice/dv
+
+theme:
+    name: 'material'
+    features:
+      - navigation.expand
+    palette:
+        primary: grey
+        accent: red
+nav:
+  - Introduction: index.md
+
+extra:
+  version:
+    provider: mike
